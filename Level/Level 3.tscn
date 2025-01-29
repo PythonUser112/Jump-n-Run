@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://enemies/Bee.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Level.gd" type="Script" id=2]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://graphics/GRP/tileset_wall.tres" type="TileSet" id=5]
+[ext_resource path="res://ParallaxBackground.tscn" type="PackedScene" id=6]
+
+[node name="Level 3" type="Node"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 3, 3 )
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 67, 67 )
+collision_mask = 6
+format = 1
+tile_data = PoolIntArray( -393197, 8, 0, -327665, 8, 0, -262124, 8, 0, -196599, 8, 0, -196595, 8, 0, -131051, 8, 0, -65532, 1073741831, 0, -65531, 1073741832, 0, -65530, 1073741833, 0, -65501, -1073741816, 0, 65525, -1610612728, 0, 3, -536870904, 0, 22, 8, 0, 35, -1073741816, 0, 131061, -1610612728, 0, 65539, -536870904, 0, 65559, 1610612756, 0, 65560, 1610612757, 0, 65561, 1610612757, 0, 65562, 1610612757, 0, 65563, 1610612757, 0, 65564, -1073741803, 0, 65571, -1073741816, 0, 196597, -1610612728, 0, 131073, -536870904, 0, 131075, -536870905, 0, 131076, 7, 0, 131077, 8, 0, 131078, 9, 0, 131080, 8, 0, 131100, -1073741803, 0, 131107, -1073741816, 0, 262133, -1610612728, 0, 196609, -536870904, 0, 196619, 8, 0, 196636, -1073741803, 0, 196637, 8, 0, 196643, -1073741816, 0, 327669, -1610612728, 0, 262145, -536870904, 0, 262153, 8, 0, 262172, -1073741803, 0, 262174, 8, 0, 262179, -1073741816, 0, 393205, -1610612728, 0, 327681, -536870904, 0, 327695, -1073741816, 0, 327708, -1073741803, 0, 327715, -1073741816, 0, 458741, -1610612728, 0, 393217, -536870904, 0, 393224, 8, 0, 393231, -1073741816, 0, 393248, 8, 0, 393251, -1073741816, 0, 524277, -1610612728, 0, 458753, -536870904, 0, 458761, 8, 0, 458763, 8, 0, 458767, -1073741816, 0, 458783, 8, 0, 458787, -1073741816, 0, 589813, -1610612728, 0, 524289, -536870904, 0, 524303, -1073741816, 0, 524318, 8, 0, 524320, 8, 0, 524321, 8, 0, 524322, 8, 0, 655349, -1610612728, 0, 589825, 8, 0, 589826, 8, 0, 589827, 8, 0, 589828, 8, 0, 589829, 8, 0, 589830, 8, 0, 589831, 8, 0, 589832, 8, 0, 589833, 8, 0, 589834, 8, 0, 589835, 8, 0, 589836, 8, 0, 589837, 8, 0, 589838, 8, 0, 589839, 8, 0, 589840, 8, 0, 589841, 8, 0, 589842, 8, 0, 589843, 8, 0, 589844, 8, 0, 589845, 8, 0, 589846, 8, 0, 589853, 8, 0, 720885, -1610612728, 0, 655388, 8, 0, 786421, -1610612728, 0, 720923, 8, 0, 851958, 8, 0, 851959, 8, 0, 851960, 8, 0, 851961, 8, 0, 851962, 8, 0, 851963, 8, 0, 851964, 8, 0, 851965, 8, 0, 851966, 8, 0, 851967, 8, 0, 786432, 8, 0, 786433, 8, 0, 786434, 8, 0, 786435, 8, 0, 786436, 8, 0, 786437, 8, 0, 786438, 8, 0, 786439, 8, 0, 786440, 8, 0, 786441, 8, 0, 786442, 8, 0, 786443, 8, 0, 786444, 8, 0, 786445, 8, 0, 786446, 8, 0, 786447, 8, 0, 786448, 8, 0, 786458, 8, 0, 851985, 8, 0, 851993, 8, 0, 917522, 8, 0, 917523, 8, 0, 917524, 8, 0, 917525, 8, 0, 917526, 8, 0, 917527, 8, 0, 917528, 8, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 360, 100 )
+scale = Vector2( 1.00991, 1 )
+has_gun = true
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Bee" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1622, 195 )
+
+[node name="Bee2" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1684, 143 )
+
+[node name="Bee3" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1627, 134 )
+
+[node name="Bee4" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1797, 202 )
+
+[node name="Bee5" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1739, 196 )
+
+[node name="Bee6" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1678, 197 )
+
+[node name="Bee7" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1800, 138 )
+
+[node name="Bee8" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1853, 144 )
+
+[node name="Bee9" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1859, 195 )
+
+[node name="Bee10" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1748, 144 )
+
+[node name="Bee11" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1856, 308 )
+
+[node name="Bee12" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1796, 308 )
+
+[node name="Bee13" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1743, 300 )
+
+[node name="Bee14" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1690, 310 )
+
+[node name="Bee15" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1626, 307 )
+
+[node name="Bee16" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1854, 259 )
+
+[node name="Bee17" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1797, 256 )
+
+[node name="Bee18" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1740, 252 )
+
+[node name="Bee19" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1680, 252 )
+
+[node name="Bee20" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1626, 253 )
+
+[node name="Bee21" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1852, 364 )
+
+[node name="Bee22" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1806, 359 )
+
+[node name="Bee23" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1754, 364 )
+
+[node name="Bee24" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1696, 362 )
+
+[node name="Bee25" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 1628, 370 )
+
+[connection signal="coins_changed" from="." to="CanvasLayer/HUD" method="_on_Main_coins_changed"]
+[connection signal="keys_changed" from="." to="CanvasLayer/HUD" method="_on_Main_keys_changed"]
+[connection signal="score_changed" from="." to="CanvasLayer/HUD" method="_on_Main_score_changed"]
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="_on_Player_life_changed"]
