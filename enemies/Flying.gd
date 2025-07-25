@@ -5,9 +5,14 @@ signal killed
 
 export (Vector2) var marker
 export (int) var move_speed = 100
+export (bool) var friendly = false
+export (bool) var override_visibility_factor = false
 var vel = Vector2()
-var move = false
 var dead = false
+var move = false
+
+func _ready():
+	move = override_visibility_factor and not friendly
 
 func _process(delta):
 	if move:
@@ -27,7 +32,7 @@ func _on_VisibilityNotifier2D_screen_entered():
 
 
 func _on_VisibilityNotifier2D_screen_exited():
-	move = false
+	move = false or override_visibility_factor
 
 
 func set_marker_pos(pos):
@@ -39,8 +44,10 @@ func _on_CollisionArea_body_entered(body):
 
 
 func damage():
+	if friendly:
+		return
 	if not dead:
-		move = false
+		move = override_visibility_factor
 		dead = true
 		$AnimationPlayer.play("die")
 		yield($AnimationPlayer, "animation_finished")

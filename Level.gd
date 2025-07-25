@@ -17,13 +17,15 @@ var pickups = [[], [["key_red", -20, 25], ["star", -12, 6],
 			["gem_yellow", 2, 26], ["star", 28, 5], ["star", 28, 4], 
 			["star", 28, 3], ["star", 28, 8], ["key_yellow", 29, 5],
 			["key_red", 29, 9]], 
-			[["key_red", 4, -2], ["gem_green", 34, 7]]]
+			[["key_red", 4, -2], ["gem_green", 34, 7]],
+			[["gem_blue", 0, 50]]]
 var lock_scene = preload("res://Lock.tscn")
 var locks = [[], [["red", -11, 6], ["red", -11, 5], ["red", -11, 4], 
 			["red", -11, 3], ["blue", -49, 29], ["blue", -48, 29]], 
 			[["red", 18, 19],["yellow", 18, 22], ["blue", 27, 9],
 			["blue", 27, 8], ["blue", 27, 7], ["red", 27, 5], ["green", 27, 4],
-			["red", 27, 3], ["green", 27, 2]], [["red", 33, 6], ["red", 34, 6]]]
+			["red", 27, 3], ["green", 27, 2]], [["red", 33, 6], ["red", 34, 6]],
+			[]]
 var keys = {"key_red":false, "key_yellow":false, 
 			"key_green":false, "key_blue":false, "key_":true}
 var cpt = {"coin_gold":3, "coin_silver":2, "coin_bronze":1}
@@ -42,7 +44,8 @@ func init(_level):
 	if has_node("Enemies"):
 		for enemy in get_node("Enemies").get_children():
 # warning-ignore:return_value_discarded
-			enemy.connect("collided", $Player, "enemy_collision")
+			if !enemy.friendly:
+				enemy.connect("collided", $Player, "enemy_collision")
 			enemy.connect("killed", self, "enemy_killed")
 			$Player.connect("moved", enemy, "set_marker_pos")
 	$Player.start(player_start_pos[level-1])
@@ -94,3 +97,10 @@ func _on_Player_dead():
 func enemy_killed():
 	score += 50
 	emit_signal("score_changed", score)
+
+
+func _on_GhostChecker_body_entered(body):
+	print("Checked!!!")
+	$TileMap/Ghost.hide()
+	$TileMap/Invisible.show()
+

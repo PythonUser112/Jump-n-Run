@@ -2,7 +2,7 @@ extends Control
 
 export (PackedScene) var fontbutton
 
-var loadable_levels = 3
+var loadable_levels = 4
 var score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 var max_level = 1
 var coins = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
