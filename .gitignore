@@ -1,0 +1,8 @@
+# Godot .import-Files, not needed for production
+.imports/*
+*.imports
+assets/parallax/*.import
+assets/GRP/*/*.import
+
+# Access tokens
+.token.txt
